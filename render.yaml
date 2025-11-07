@@ -1,0 +1,26 @@
+# Configuração para deploy automático no Render
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # Backend - Web Service
+  - type: web
+    name: agenda-contatos-backend
+    runtime: node
+    plan: free
+    region: oregon # ou escolha: frankfurt, ohio, singapore
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
+    autoDeploy: true
+# Se você precisar de um banco de dados PostgreSQL no Render, descomente:
+# databases:
+#   - name: agenda-contatos-db
+#     plan: free
+#     databaseName: agenda_contatos
+#     user: agenda_user

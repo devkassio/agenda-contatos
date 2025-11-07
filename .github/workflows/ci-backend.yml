@@ -1,0 +1,55 @@
+name: CI Backend
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/ci-backend.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: 📦 Instalar dependências
+        working-directory: ./backend
+        run: npm ci
+
+      - name: 🧪 Executar testes (se houver)
+        working-directory: ./backend
+        run: |
+          if [ -f "package.json" ] && grep -q "\"test\"" package.json; then
+            npm test
+          else
+            echo "Sem testes configurados"
+          fi
+
+      - name: 🔍 Verificar sintaxe
+        working-directory: ./backend
+        run: |
+          node -c server.js
+          node -c database.js
+          node -c routes.js
+          node -c logger.js
+
+      - name: ✅ Backend validado
+        run: echo "✅ Backend passou em todas as verificações!"

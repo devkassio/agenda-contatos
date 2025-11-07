@@ -1,0 +1,63 @@
+name: Deploy Frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissões necessárias para deploy no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Apenas um deploy por vez
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  # Job de build do frontend
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: 📦 Instalar dependências do frontend
+        run: |
+          cd frontend
+          npm ci
+
+      - name: 🏗️ Build do frontend
+        run: |
+          cd frontend
+          npm run build
+        env:
+          CI: true
+
+      - name: 📄 Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: 📤 Upload artifact para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './frontend/build'
+
+  # Job de deploy no GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

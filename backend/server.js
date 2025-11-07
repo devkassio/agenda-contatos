@@ -1,0 +1,43 @@
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import routes from './routes.js';
+
+const app = express();
+const PORT = 3001;
+
+/*  Middleware */
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+/* rotas da API */
+app.use('/api', routes);
+
+/* rota raiz pra testar se o servidor está online */
+app.get('/', (_req, res) => {
+  res.json({
+    mensagem: 'API Agenda de Contatos rodando!',
+    versao: '1.0.0',
+    endpoints: {
+      listar: 'GET /api/contatos',
+      buscar: 'GET /api/contatos/:id',
+      pesquisar: 'GET /api/contatos?nome=xxx&telefone=xxx',
+      criar: 'POST /api/contatos',
+      atualizar: 'PUT /api/contatos/:id',
+      excluir: 'DELETE /api/contatos/:id',
+    },
+  });
+});
+
+/* tratamento de erro 404 */
+app.use((_req, res) => {
+  res.status(404).json({ erro: 'Rota nao encontrada' });
+});
+
+/* inicia o servidor */
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`📡 API disponível em: http://localhost:${PORT}`);
+  console.log(`📝 Documentação em: http://localhost:${PORT}/`);
+});

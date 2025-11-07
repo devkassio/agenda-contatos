@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Cria a conexão com o banco
-export const db = new Database(path.join(__dirname, 'database.db'));
+export const db = new Database(path.join(__dirname, 'contatos.db'));
 
 // Ativa chaves estrangeiras
 db.pragma('foreign_keys = ON');

@@ -4,7 +4,8 @@ import express from 'express';
 import routes from './routes.js';
 
 const app = express();
-const PORT = 3001;
+// Usa a porta do ambiente (Render) ou 3001 (local)
+const PORT = process.env.PORT || 3001;
 
 /*  Middleware */
 app.use(cors());
@@ -19,6 +20,7 @@ app.get('/', (_req, res) => {
   res.json({
     mensagem: 'API Agenda de Contatos rodando!',
     versao: '1.0.0',
+    ambiente: process.env.NODE_ENV || 'development',
     endpoints: {
       listar: 'GET /api/contatos',
       buscar: 'GET /api/contatos/:id',

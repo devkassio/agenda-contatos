@@ -869,9 +869,9 @@ curl -X POST http://localhost:3001/api/contatos \
 | **ES6 Modules**    | Código moderno, tree-shaking, melhor organização                    |
 | **Axios**          | Interceptors, melhor tratamento de erros que fetch()                |
 
-### 🎓 Conceitos Aplicados
+### 🎓 Conceitos e Tecnologias
 
-Durante o desenvolvimento foram aplicados:
+O projeto implementa:
 
 - ✅ Arquitetura RESTful
 - ✅ Relacionamento 1:N em banco de dados

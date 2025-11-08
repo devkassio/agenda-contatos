@@ -8,7 +8,20 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 /*  Middleware */
-app.use(cors());
+// Configuração CORS para aceitar requisições do frontend
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === 'production'
+      ? [
+          'https://devkassio.github.io',
+          'https://agenda-contatos-backend.onrender.com',
+        ]
+      : '*', // Em desenvolvimento aceita qualquer origem
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

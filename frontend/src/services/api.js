@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Usa a URL da API do ambiente ou localhost para desenvolvimento
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api',
+  baseURL: API_URL,
 });
 
 // funcoes pra interagir com a API

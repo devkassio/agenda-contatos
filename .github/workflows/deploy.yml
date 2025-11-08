@@ -43,7 +43,8 @@ jobs:
           cd frontend
           npm run build
         env:
-          CI: true
+          CI: false
+          REACT_APP_API_URL: https://agenda-contatos-backend.onrender.com/api
 
       - name: 📄 Setup Pages
         uses: actions/configure-pages@v4

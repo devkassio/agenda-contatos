@@ -18,15 +18,5 @@ services:
         value: 10000
       - key: DATABASE_TYPE
         value: sqlite
-        # Para usar PostgreSQL, altere para 'postgres' e configure DATABASE_URL
     healthCheckPath: /
     autoDeploy: true
-
-# Banco de dados PostgreSQL (opcional - recomendado para produção)
-# Descomente as linhas abaixo para usar PostgreSQL no Render
-# databases:
-#   - name: agenda-contatos-db
-#     plan: free
-#     region: oregon
-#     ipAllowList: []
-

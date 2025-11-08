@@ -327,6 +327,56 @@ Total de Contatos: 2
 Total de Telefones: 3
 ```
 
+### 💾 Exportar Banco de Dados
+
+Para criar backups do banco de dados:
+
+```bash
+cd backend
+npm run export
+# ou
+node exportar-banco.js
+```
+
+**Arquivos gerados:**
+
+- `backup-banco.sql` - Backup em formato SQL
+- `backup-banco.json` - Backup em formato JSON com metadados
+
+**Saída:**
+
+```
+🗄️  EXPORTANDO BANCO DE DADOS...
+
+✅ Backup criado com sucesso!
+📁 Arquivo: backup-banco.sql
+📊 3 contatos exportados
+📞 5 telefones exportados
+
+✅ Backup JSON criado com sucesso!
+📁 Arquivo: backup-banco.json
+📊 3 contatos exportados
+```
+
+**Estrutura do JSON:**
+```json
+{
+  "metadata": {
+    "exportDate": "2024-11-08T15:30:00.000Z",
+    "totalContacts": 3,
+    "totalPhones": 5
+  },
+  "contatos": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "idade": 30,
+      "telefones": ["(11) 98888-8888", "(11) 97777-7777"]
+    }
+  ]
+}
+```
+
 ---
 
 ## 📝 Sistema de Logs
@@ -374,8 +424,11 @@ agenda-contatos/
 │   ├── routes.js                  # Definição de rotas RESTful
 │   ├── logger.js                  # Sistema de auditoria de exclusões
 │   ├── visualizar.js              # Script de visualização do banco
+│   ├── exportar-banco.js          # Script de exportação (SQL + JSON)
 │   ├── package.json               # Dependências e scripts (ES6 modules)
 │   ├── contatos.db                # Banco SQLite (gerado automaticamente)
+│   ├── backup-banco.sql           # Backup em SQL (gerado por exportar-banco.js)
+│   ├── backup-banco.json          # Backup em JSON (gerado por exportar-banco.js)
 │   └── node_modules/              # Pacotes npm instalados
 │
 ├── 📂 frontend/                   # Aplicação React

@@ -40,7 +40,9 @@ function exportarParaSQL() {
     sqlDump += '-- Dados da tabela Contato\n';
     contatos.forEach(c => {
       const idade = c.IDADE !== null ? c.IDADE : 'NULL';
-      sqlDump += `INSERT INTO Contato (ID, NOME, IDADE) VALUES (${c.ID}, '${c.NOME.replace(/'/g, "''")}', ${idade});\n`;
+      sqlDump += `INSERT INTO Contato (ID, NOME, IDADE) VALUES (${
+        c.ID
+      }, '${c.NOME.replace(/'/g, "''")}', ${idade});\n`;
     });
     sqlDump += '\n';
   }
@@ -94,10 +96,16 @@ function exportarParaJSON() {
     })),
   };
 
-  fs.writeFileSync(outputPath, JSON.stringify(dadosFormatados, null, 2), 'utf8');
+  fs.writeFileSync(
+    outputPath,
+    JSON.stringify(dadosFormatados, null, 2),
+    'utf8'
+  );
   console.log(`\n✅ Backup JSON criado com sucesso!`);
   console.log(`📁 Arquivo: ${outputPath}`);
-  console.log(`📊 ${dadosFormatados.metadata.totalContacts} contatos exportados\n`);
+  console.log(
+    `📊 ${dadosFormatados.metadata.totalContacts} contatos exportados\n`
+  );
 }
 
 // Executa as exportações

@@ -641,18 +641,21 @@ curl -X DELETE http://localhost:3001/api/contatos/1
 O projeto possui workflows automatizados para garantir qualidade e deploy contínuo:
 
 #### CI Backend (`ci-backend.yml`)
+
 - ✅ Testa em Node.js 18.x e 20.x
 - ✅ Instala dependências com cache
 - ✅ Verifica sintaxe dos arquivos
 - ✅ Executa em push/PR nas branches main e develop
 
 #### CI Frontend (`ci-frontend.yml`)
+
 - ✅ Testa em Node.js 18.x e 20.x
 - ✅ Build da aplicação React
 - ✅ Executa testes (se configurados)
 - ✅ Valida que o projeto compila sem erros
 
 #### Deploy GitHub Pages (`deploy.yml`)
+
 - 🚀 Deploy automático do frontend em GitHub Pages
 - 📦 Build otimizado para produção
 - 🌐 Disponível em: `https://devkassio.github.io/agenda-contatos`
@@ -670,6 +673,7 @@ O backend pode ser facilmente deployado no Render usando o arquivo `render.yaml`
 ```
 
 **Configurações do render.yaml:**
+
 - 🟢 Runtime: Node.js
 - 📍 Região: Oregon (US West)
 - 💰 Plano: Free
@@ -681,6 +685,7 @@ O backend pode ser facilmente deployado no Render usando o arquivo `render.yaml`
 A aplicação é instalável como PWA:
 
 **Recursos PWA:**
+
 - 📱 Instalável em desktop e mobile
 - 🎨 Ícones personalizados (192x192, 512x512)
 - 🌈 Theme color: `#667eea`
@@ -688,6 +693,7 @@ A aplicação é instalável como PWA:
 - 🔍 SEO otimizado com robots.txt
 
 **Para instalar:**
+
 1. Acesse a aplicação no navegador
 2. Clique no ícone de instalação na barra de endereço
 3. Confirme a instalação
@@ -891,8 +897,6 @@ Durante o desenvolvimento foram aplicados:
 ---
 
 <div align="center">
-
-
 
 [![GitHub](https://img.shields.io/badge/GitHub-devkassio-181717?style=for-the-badge&logo=github)](https://github.com/devkassio)
 

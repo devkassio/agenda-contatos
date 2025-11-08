@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "exportDate": "2025-11-08T17:29:06.769Z",
+    "totalContacts": 3,
+    "totalPhones": 5
+  },
+  "contatos": [
+    {
+      "id": 1,
+      "nome": "Kássio Barros",
+      "idade": 21,
+      "telefones": [
+        "16992162921",
+        "16992459984"
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Interestrelar",
+      "idade": 100,
+      "telefones": [
+        "11992224444",
+        "16992162292"
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Paulo Henrique",
+      "idade": 49,
+      "telefones": [
+        "16992162299"
+      ]
+    }
+  ]
+}

@@ -52,6 +52,10 @@ coverage/
 *.temp
 .cache/
 
+# Arquivos de avaliação (não devem ser versionados)
+avaliacao_teste.md
+teste_logico.md
+
 # VS Code workspace settings (opcional)
 .vscode/
 !.vscode/settings.json

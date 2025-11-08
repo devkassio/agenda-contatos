@@ -869,12 +869,14 @@ curl -X POST http://localhost:3001/api/contatos \
 ### ⏱️ Tempo de Desenvolvimento por Módulo
 
 #### Backend (8-10h)
+
 - Database modeling: 2h
 - API REST implementation: 4h
 - Validations & security: 2h
 - Testing: 2h
 
 #### Frontend (8-10h)
+
 - React setup: 1h
 - Components: 4h
 - State management: 2h
@@ -882,11 +884,13 @@ curl -X POST http://localhost:3001/api/contatos \
 - Integration testing: 1h
 
 #### Deploy & Infra (4-6h)
+
 - GitHub Actions setup: 2h
 - Render configuration: 2h
 - Documentation: 2h
 
 #### Debugging & Polish (2-4h)
+
 - Bug fixes
 - Performance optimization
 - Final adjustments

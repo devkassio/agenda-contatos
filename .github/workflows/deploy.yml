@@ -10,6 +10,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 # Apenas um deploy por vez
 concurrency:
@@ -46,6 +47,8 @@ jobs:
 
       - name: 📄 Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
 
       - name: 📤 Upload artifact para Pages
         uses: actions/upload-pages-artifact@v4
